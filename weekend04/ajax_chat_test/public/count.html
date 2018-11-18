@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>count.html</title>
+</head>
+<body>
+    <div id="result"></div>
+    <script>
+        window.onload = function() {
+            event.preventDefault();
+            
+            var url = "http://localhost:3000/count";
+            var xhr = new XMLHttpRequest();
+            
+            xhr.onreadystatechange = function() {
+                document.getElementById('result').innerHTML = "<h3>Count =>"+this.responseText+"</h3>";
+            };
+            xhr.open("GET", url, true);
+            xhr.send();
+        }
+    </script>
+</body>
+</html>

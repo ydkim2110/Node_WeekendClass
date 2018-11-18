@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register User</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Register User</h2>
+        <form method="post" action="/process/adduser">
+            id : <input class="form-control" type="text" name="id"><br>
+            password : <input class="form-control" type="text" name="password"><br>
+            name : <input class="form-control" type="text" name="name"><br>
+            <input class="btn btn-primary" type="submit" value="사용자 추가">
+        </form>
+    </div>
+    <script>
+        ar form = document.forms[0];
+        form.onsubmit = function(e) {
+            e.preventDefault();
+            
+            if (this.id.value == "") {
+                alert('아이디를 입력하세요.');
+                this.id.focus();
+                return;
+            }
+            if (this.password.value == "") {
+                alert('비밀번호를 입력하세요.');
+                this.password.focus();
+                return;
+            }
+            if (this.name.value == "") {
+                alert('이름을 입력하세요.');
+                this.name.focus();
+                return;
+            }
+            this.submit();
+        }
+    </script>
+</body>
+</html>

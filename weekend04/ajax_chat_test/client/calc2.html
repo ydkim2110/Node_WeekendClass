@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+    <h2>Ajax를 이용한 계산기 프로그램</h2>
+    <form action="">
+        <input type="text" name="a" size="3">
+        <input type="text" name="b" size="3">
+        <select name="op" id="">
+            <option value="plus">Plus</option>
+            <option value="minus">Minus</option>
+            <option value="mult">Mult</option>
+            <option value="div">div</option>
+        </select>
+        <input type="submit" value="result">        
+    </form>
+    <div id="result"></div>   
+   
+    <script>
+        // Ajax 테스트        
+        var xhr = new XMLHttpRequest();
+        var form = document.forms[0];
+        
+        form.onsubmit = function() {
+            event.preventDefault(); // submit 기능 일시 정지
+            
+            var op = this.op.value;
+            var a = this.a.value;
+            var b = this.b.value;
+            var url = 'http://localhost:3000/calc/' + op + '/' + a + '/' + b;
+            
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText);
+                }
+
+            };        
+            xhr.open('GET', url, true);
+            xhr.send();                        
+        };
+    </script>
+</body>
+</html>

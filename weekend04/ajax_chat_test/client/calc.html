@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+    <script>
+        // Ajax 테스트        
+        var xhr = new XMLHttpRequest();
+        console.log(xhr);
+        xhr.onreadystatechange = function () {
+            // 요청 처리 결과 이벤트 처리 콜백함수
+            //console.log('this.status >>> ' + this.status);
+            //console.log('this.readyState >>> ' + this.readyState);
+            
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+            }
+            
+        };        
+        xhr.open('GET', 'http://localhost:3000', true);
+        xhr.send();
+    </script>
+</body>
+</html>

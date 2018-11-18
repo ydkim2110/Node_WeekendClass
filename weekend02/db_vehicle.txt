@@ -1,0 +1,91 @@
+use vehicle
+
+db
+
+db.car.save({name: 'SM5', price: 2300, company: 'Samsung', year: 2013});
+db.car.save({name: 'Sonata', price: 2600, company: 'HYUNDAI', year: 2012});
+db.car.save({name: 'BMW', price: 3000, company: 'BMW', year: 2017});
+db.car.save({name: 'K7', price: 3600, company: 'KIA', year: 2018});
+db.car.save({name: '경운기', price: 1000, company: '대동', year: 2012});
+
+
+db.car.find({name: 'K7'}).pretty();
+
+db.car.find({name: 'K7'}, {_id: false}).pretty();
+
+db.car.find({price:{$gt: 2000}}, {_id: false});
+
+db.car.find({price:{$lte: 2300}}, {_id: false});
+db.car.find({price:{$lt: 2300}}, {_id: false});
+
+db.car.find({price:{$gte: 2300}}, {_id: false}).count();
+
+db.car.findOne();
+
+db.car.findOne({}, {_id: false});
+
+db.car.find().sort({name:1});
+db.car.find().sort({name:-1});
+
+db.car.update({name: 'K7'}, {$set: {price: 1000}}, false, false);
+db.car.find({name:'K7'});
+
+db.car.remove({name: '경운기'});
+db.car.find();
+
+db.createCollection('newCar');
+db.getCollectionNames();
+
+db.newCar.drop();
+db.getCollectionNames();
+
+db.car.drop();
+db.getCollectionNames();
+
+db.dropDatabase();
+
+db
+
+exit
+
+
+>>> db.car.find({price:{$gt: 2000}}, {_id: false});
+
+>>> db.car.find({price:{$lte: 2300}}, {_id: false});
+>>> db.car.find({price:{$lt: 2300}}, {_id: false});
+
+>>> db.car.find({price:{$gte: 2300}}, {_id: false}).count();
+
+>>> db.car.findOne();
+
+>>> db.car.findOne({}, {_id: false});
+
+>>> db.car.find().sort({name:1});
+>>> db.car.find().sort({name:-1});
+
+>>> db.car.update({name: 'K7'}, {$set: {price: 1000}}, false, false);
+>>> db.car.find({name:'K7'});
+
+>>> db.car.remove({name: '경운기'});
+>>> db.car.find();
+
+>>> db.createCollection('newCar');
+>>> db.getCollectionNames();
+
+>>> db.newCar.drop();
+>>> db.getCollectionNames();
+
+>>> db.car.drop();
+>>> db.getCollectionNames();
+
+>>> db.dropDatabase();
+
+>>> db
+
+>>> exit
+
+
+
+
+
+

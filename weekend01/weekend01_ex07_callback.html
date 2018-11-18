@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Callback</title>
+    <style>
+        div#box 
+        {
+            border: 1px solid green;
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+        }
+    </style>
+    <script>
+        var move = function(selector, goal, callback) {
+            //var selector = arguments[0];
+            //console.log(selector);
+            var box = document.querySelector(selector);            
+            //console.dir(box);
+            box.callback = callback;
+            box.style.position = 'relative';
+            //box.style.left = '400px';
+            var x = 0;
+            var interval = setInterval(function() {
+                x += 10;
+                box.style.left = x+'px';
+                
+                if (x>500) {
+                    clearInterval(interval);
+                    box.callback();
+                }
+            }, 1000/30); // 1초에 30번 반복
+        };
+        
+        window.onload = function() {
+            move('#box', 500, function(box2) {
+                console.log('callback');
+                this.style.backgroundColor = "tomato";
+                console.log(this);
+            });
+        };
+    </script>
+</head>
+<body>
+   
+   <div id="box">
+       
+   </div>
+    
+    
+    
+</body>
+</html>

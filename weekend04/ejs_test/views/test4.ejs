@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test4 Ejs</title>
+</head>
+<body>
+    <h1>사용자 목록</h1>
+
+    <table>
+<%
+    for (i in userDocs) {
+%>
+        <tr>
+            <td><%= userDocs[i].id %></td>
+            <td><%= userDocs[i].name %></td>
+            <td><%= userDocs[i].password %></td>
+        </tr>
+<%
+    }
+%>
+    </table>
+</body>
+</html>
